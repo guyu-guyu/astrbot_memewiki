@@ -1,0 +1,38 @@
+__init__.py
+  s_ae28f67c4a9cb4::t_c87625a2788721 1-2
+requirements.txt
+  s_ae28f67c4a9cb4::t_145edddde8a2af 1
+metadata.yaml
+  s_ae28f67c4a9cb4::t_145edddde8a2af 1-14
+web_search.py
+  s_ae28f67c4a9cb4::t_145edddde8a2af 1-97
+meme_store.py
+  s_ae28f67c4a9cb4::t_145edddde8a2af 1-303
+main.py
+  s_ae28f67c4a9cb4::t_4ce87b73dd6ed3 1-385
+  s_ae28f67c4a9cb4::t_9936c7f8b36875 386-388
+tests/test_meme_store.py
+  s_ae28f67c4a9cb4::t_4ce87b73dd6ed3 1-40
+tests/test_web_search.py
+  s_ae28f67c4a9cb4::t_0c2a2ac98742bd 1-19
+_conf_schema.json
+  s_ae28f67c4a9cb4::t_145edddde8a2af 1-32
+README.md
+  s_ae28f67c4a9cb4::t_4ce87b73dd6ed3 1-31
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "7d4180ca1a8e45e3961979f20e234d256169b9be",
+  "prompts": {},
+  "sessions": {
+    "s_ae28f67c4a9cb4": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0420d-80b8-7f22-8646-7b53f08ecc57",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "leijieliu <leijieliu@tencent.com>"
+    }
+  }
+}
