@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>梗 Wiki 看板</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="dashboard">
+      <header class="toolbar">
+        <div>
+          <h1>梗 Wiki</h1>
+          <p id="entry-count" class="entry-count">正在加载</p>
+        </div>
+        <button id="refresh-button" class="refresh-button" type="button">刷新</button>
+      </header>
+
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+
+      <section class="table-shell" aria-label="梗 Wiki 词条">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">梗</th>
+              <th scope="col">含义</th>
+              <th scope="col">来源</th>
+              <th scope="col">置信度</th>
+              <th scope="col">更新时间</th>
+              <th scope="col" class="action-column">操作</th>
+            </tr>
+          </thead>
+          <tbody id="entry-table-body"></tbody>
+        </table>
+        <div id="empty-state" class="empty-state" hidden>暂无已记录的梗</div>
+      </section>
+    </main>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

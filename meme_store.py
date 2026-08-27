@@ -301,3 +301,17 @@ class MemeWikiStore:
             del self._entries[key]
             self._write_locked()
             return True
+
+    def delete_exact(self, term: str) -> bool:
+        """Delete only an exact normalized term match."""
+
+        key = normalize_text(term)
+        if not key:
+            return False
+        with self._lock:
+            self._ensure_loaded()
+            if key not in self._entries:
+                return False
+            del self._entries[key]
+            self._write_locked()
+            return True

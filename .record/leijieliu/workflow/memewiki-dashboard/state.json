@@ -3,7 +3,7 @@
   "feature": "memewiki-dashboard",
   "owner": "leijieliu",
   "createdAt": "2026-08-27T09:50:37Z",
-  "updatedAt": "2026-08-27T09:50:37Z",
+  "updatedAt": "2026-08-27T09:50:44Z",
   "scope": "lobby",
   "workflow_schema": {
     "schema_version": 1,
@@ -130,7 +130,7 @@
     "calls": []
   },
   "command_failures": [],
-  "total_duration_ms": 0,
+  "total_duration_ms": 7000,
   "phases_meta": [
     {
       "id": "init",
@@ -169,7 +169,7 @@
       "name": "完成"
     }
   ],
-  "event_count": 1,
-  "last_event_id": "01M11A1V94P1K8TH4TME42GKSY",
+  "event_count": 2,
+  "last_event_id": "01M11A219XP01H76DJX8N96B17",
   "_corrupted_count": 0
 }

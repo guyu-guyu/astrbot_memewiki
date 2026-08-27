@@ -6,9 +6,13 @@
 
 ## 安装
 
-将本目录放入 AstrBot 的 `data/plugins/astrbot_plugin_meme_wiki/`，安装 `requirements.txt` 中的依赖，然后在 WebUI 中重载插件。AstrBot 需要 `4.9.2` 或更高版本。
+将本目录放入 AstrBot 的 `data/plugins/astrbot_plugin_meme_wiki/`，安装 `requirements.txt` 中的依赖，然后在 WebUI 中重载插件。AstrBot 需要 `4.24.2` 或更高版本。
 
 词条保存在 AstrBot 的 `data/plugin_data/astrbot_plugin_meme_wiki/meme_wiki.json`，更新或重装插件不会覆盖它。
+
+## 看板
+
+AstrBot `4.24.2` 及以上版本可以从插件详情页打开“梗 Wiki 看板”。看板一次性展示所有已记录词条，并支持删除。删除前会要求再次确认。
 
 ## 人工命令
 
@@ -37,5 +41,10 @@ https://zh.moegirl.org.cn/index.php?search=
 - `lookup_meme` 和 `remember_meme` 分离，搜索结果不会在未经模型核实的情况下自动写入词典。
 - 网络请求使用 `aiohttp`，按配置顺序访问搜索地址；失败、超时或搜索引擎不可用都不会阻塞正常聊天。
 - 词条文件采用同目录临时文件加原子替换写入，避免进程中断造成半写文件。
+
+## 后续计划
+
+- 添加分页、搜索和词条详情展示。
+- 添加词条编辑功能。
 
 开发接口依据 [AstrBot 插件开发指南](https://docs.astrbot.app/dev/star/plugin-new.html)、[AI 调用](https://docs.astrbot.app/dev/star/guides/ai.html)、[处理消息事件](https://docs.astrbot.app/dev/star/guides/listen-message-event.html) 和 [插件存储](https://docs.astrbot.app/dev/star/guides/storage.html)。

@@ -3,10 +3,10 @@ display_name: 梗 Wiki
 short_desc: 让 AI 查询、学习并记住聊天中的网络梗。
 desc: |
   在聊天中为 AI 提供梗词典能力。遇到不熟悉的网络用语时，AI 可以检索当前会话记录和萌娘百科，整理含义与用法后写入持久化词条；后续消息命中已知梗时，词条会自动作为临时上下文注入。
-version: 1.0.0
+version: 1.1.0
 author: astrbot_memewiki
-repo: https://github.com/astrbot-meme-wiki/astrbot_plugin_meme_wiki
-astrbot_version: ">=4.9.2,<5"
+repo: https://github.com/guyu-guyu/astrbot_memewiki
+astrbot_version: ">=4.24.2,<5"
 support_platforms:
   - aiocqhttp
   - qq_official

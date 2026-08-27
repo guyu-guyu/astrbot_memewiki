@@ -1841,7 +1841,7 @@ let STATE = {
   "feature": "memewiki-dashboard",
   "owner": "leijieliu",
   "createdAt": "2026-08-27T09:50:37Z",
-  "updatedAt": "2026-08-27T09:50:37Z",
+  "updatedAt": "2026-08-27T09:50:44Z",
   "scope": "lobby",
   "workflow_schema": {
     "schema_version": 1,
@@ -1968,7 +1968,7 @@ let STATE = {
     "calls": []
   },
   "command_failures": [],
-  "total_duration_ms": 0,
+  "total_duration_ms": 7000,
   "phases_meta": [
     {
       "id": "init",
@@ -2007,8 +2007,8 @@ let STATE = {
       "name": "完成"
     }
   ],
-  "event_count": 1,
-  "last_event_id": "01M11A1V94P1K8TH4TME42GKSY",
+  "event_count": 2,
+  "last_event_id": "01M11A219XP01H76DJX8N96B17",
   "_corrupted_count": 0
 };
 /* STATE_END */
@@ -2111,6 +2111,17 @@ const EVENTS = [
         ]
       },
       "skill_id": "game-dev-workflow"
+    },
+    "cause": null
+  },
+  {
+    "id": "01M11A219XP01H76DJX8N96B17",
+    "ts": "2026-08-27T09:50:44Z",
+    "actor": "leijieliu",
+    "type": "session.bind",
+    "payload": {
+      "session_id": "01a0420d-80b8-7f22-8646-7b53f08ecc57",
+      "feature": "memewiki-dashboard"
     },
     "cause": null
   }

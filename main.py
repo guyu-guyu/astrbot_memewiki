@@ -27,6 +27,7 @@ except ImportError:  # pragma: no cover - only useful when inspecting the module
 
 from astrbot.api.event import AstrMessageEvent, filter
 from astrbot.api.star import Context, Star
+from astrbot.api.web import error_response, json_response, request
 
 try:
     from .meme_store import MemeEntry, MemeWikiStore
@@ -117,6 +118,18 @@ class MemeWikiPlugin(Star):
         )
         self._web_cache: dict[str, tuple[float, list[SearchResult]]] = {}
         self._web_cache_ttl = 600.0
+        context.register_web_api(
+            f"/{PLUGIN_NAME}/dashboard/memes",
+            self.dashboard_list_memes,
+            ["GET"],
+            "List Meme Wiki entries",
+        )
+        context.register_web_api(
+            f"/{PLUGIN_NAME}/dashboard/memes/delete",
+            self.dashboard_delete_meme,
+            ["POST"],
+            "Delete a Meme Wiki entry",
+        )
 
     @staticmethod
     def _data_path() -> Path:
@@ -149,6 +162,21 @@ class MemeWikiPlugin(Star):
         # Search results are evidence, not instructions. The delimiters are
         # included so the model can distinguish quoted web text from policy.
         return f"标题：{result.title}\n摘要：{result.snippet}\n链接：{result.url}"
+
+    async def dashboard_list_memes(self):
+        entries = [entry.to_dict() for entry in self.store.all()]
+        return json_response({"count": len(entries), "entries": entries})
+
+    async def dashboard_delete_meme(self):
+        payload = await request.json(default={})
+        if not isinstance(payload, dict):
+            return error_response("请求内容必须是 JSON 对象", status_code=400)
+        term = str(payload.get("term") or "").strip()
+        if not term:
+            return error_response("缺少要删除的梗名", status_code=400)
+        if not self.store.delete_exact(term):
+            return error_response("词条不存在或已经被删除", status_code=404)
+        return json_response({"deleted": True, "term": term})
 
     async def _conversation_history(self, event: AstrMessageEvent) -> str:
         manager = getattr(self.context, "conversation_manager", None)

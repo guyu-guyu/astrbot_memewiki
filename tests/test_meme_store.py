@@ -35,6 +35,15 @@ class MemeWikiStoreTests(unittest.TestCase):
             self.assertEqual(store.count(), 2)
             self.assertEqual(store.search("丙")[0].meaning, "c")
 
+    def test_exact_delete_does_not_delete_fuzzy_match(self):
+        with tempfile.TemporaryDirectory() as directory:
+            store = MemeWikiStore(Path(directory) / "wiki.json")
+            store.upsert("破防", "心理防线被突破")
+            self.assertFalse(store.delete_exact("破"))
+            self.assertEqual(store.count(), 1)
+            self.assertTrue(store.delete_exact("破防"))
+            self.assertEqual(store.count(), 0)
+
 
 if __name__ == "__main__":
     unittest.main()

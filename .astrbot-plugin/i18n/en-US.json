@@ -1,0 +1,8 @@
+{
+  "pages": {
+    "meme-wiki": {
+      "title": "Meme Wiki Dashboard",
+      "description": "View and delete saved meme entries."
+    }
+  }
+}
