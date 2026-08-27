@@ -1,0 +1,27 @@
+README.md
+  s_ae28f67c4a9cb4::t_e8ade76fc7d657 5,22
+_conf_schema.json
+  s_ae28f67c4a9cb4::t_04ce1fa39d50f6 3
+metadata.yaml
+  s_ae28f67c4a9cb4::t_a316961d8433ec 5
+tests/test_web_search.py
+  s_ae28f67c4a9cb4::t_13a19723205491 3,7,9-14,16,18-31
+web_search.py
+  s_ae28f67c4a9cb4::t_3eb38acaab0f6e 1,11-14,22-37,41-45,47-50,55-84,87-93,96-100,102-113,116-117,122-123,126-127,129-142,150,156,160,167
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "cc9a1e1ecfb49701ff6291d7035cb8c28475b2d3",
+  "prompts": {},
+  "sessions": {
+    "s_ae28f67c4a9cb4": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0420d-80b8-7f22-8646-7b53f08ecc57",
+        "model": "unknown"
+      },
+      "human_author": "leijieliu <leijieliu@tencent.com>"
+    }
+  }
+}
