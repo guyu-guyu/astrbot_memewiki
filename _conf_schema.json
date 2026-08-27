@@ -1,6 +1,6 @@
 {
   "enable_web_search": {
-    "description": "未知梗是否允许通过 DuckDuckGo 搜索",
+    "description": "未知梗是否允许通过萌娘百科搜索",
     "type": "bool",
     "default": true
   },
