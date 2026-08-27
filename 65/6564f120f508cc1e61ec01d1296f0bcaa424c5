@@ -1,0 +1,23 @@
+.record/leijieliu/workflow/memewiki-dashboard/events.jsonl
+  s_ae28f67c4a9cb4::t_d23bea1c14c442 1
+.record/leijieliu/workflow/memewiki-dashboard/state.html
+  s_ae28f67c4a9cb4::t_70fa8fbff7903f 1-3911
+.record/leijieliu/workflow/memewiki-dashboard/state.json
+  s_ae28f67c4a9cb4::t_dc762c54de7507 1-175
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "656564f120f508cc1e61ec01d1296f0bcaa424c5",
+  "prompts": {},
+  "sessions": {
+    "s_ae28f67c4a9cb4": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0420d-80b8-7f22-8646-7b53f08ecc57",
+        "model": "unknown"
+      },
+      "human_author": "leijieliu <leijieliu@tencent.com>"
+    }
+  }
+}
