@@ -1,0 +1,30 @@
+web_search.py
+  s_ae28f67c4a9cb4::t_20ca25e77fd6fb 5,7,9,13-14,22,29-34,154-270,276-277,280-281,285,289-295,299-301,304,306-325
+  s_ae28f67c4a9cb4::t_c3851f8865f901 282-284,286-287
+README.md
+  s_ae28f67c4a9cb4::t_16becc4fa9eb9e 5,24-33,38
+main.py
+  s_ae28f67c4a9cb4::t_e44aabfb858595 33,36,42-43,82-103,115-116,206,208,330
+_conf_schema.json
+  s_ae28f67c4a9cb4::t_16becc4fa9eb9e 7-16
+tests/test_web_search.py
+  s_ae28f67c4a9cb4::t_1d99c628dfd633 2-3,70-130
+  s_ae28f67c4a9cb4::t_16becc4fa9eb9e 5-13,43-69
+  s_ae28f67c4a9cb4::t_a87bd32adc0602 131
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "82bc5edcdc1b5d1f7f1cf446bfb7a0d7361ded24",
+  "prompts": {},
+  "sessions": {
+    "s_ae28f67c4a9cb4": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a0420d-80b8-7f22-8646-7b53f08ecc57",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "leijieliu <leijieliu@tencent.com>"
+    }
+  }
+}
