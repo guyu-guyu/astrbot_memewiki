@@ -1,0 +1,32 @@
+{
+  "enable_web_search": {
+    "description": "未知梗是否允许通过 DuckDuckGo 搜索",
+    "type": "bool",
+    "default": true
+  },
+  "web_search_timeout": {
+    "description": "网络搜索超时时间（秒）",
+    "type": "float",
+    "default": 8.0
+  },
+  "web_result_count": {
+    "description": "每次最多返回的网页结果数",
+    "type": "int",
+    "default": 5
+  },
+  "context_entry_count": {
+    "description": "每轮自动注入的词条数量上限",
+    "type": "int",
+    "default": 5
+  },
+  "max_entries": {
+    "description": "持久化词条数量上限，超过后淘汰最早更新的词条",
+    "type": "int",
+    "default": 1000
+  },
+  "history_snippet_count": {
+    "description": "搜索当前会话时返回的上下文片段数",
+    "type": "int",
+    "default": 5
+  }
+}
