@@ -30,15 +30,17 @@ from astrbot.api.star import Context, Star
 
 try:
     from .meme_store import MemeEntry, MemeWikiStore
-    from .web_search import SearchResult, WebSearchClient
+    from .web_search import DEFAULT_SEARCH_ENDPOINTS, SearchResult, WebSearchClient
 except ImportError:  # AstrBot may load main.py as a standalone plugin module.
     from meme_store import MemeEntry, MemeWikiStore
-    from web_search import SearchResult, WebSearchClient
+    from web_search import DEFAULT_SEARCH_ENDPOINTS, SearchResult, WebSearchClient
 
 
 PLUGIN_NAME = "astrbot_plugin_meme_wiki"
 DEFAULT_CONFIG: dict[str, Any] = {
     "enable_web_search": True,
+    "search_endpoints": "\n".join(DEFAULT_SEARCH_ENDPOINTS),
+    "search_match_threshold": 0.72,
     "web_search_timeout": 8.0,
     "web_result_count": 5,
     "context_entry_count": 5,
@@ -77,6 +79,28 @@ def _enabled(config: Any, key: str) -> bool:
     return bool(value)
 
 
+def _search_endpoints(config: Any) -> list[str]:
+    """Read newline-separated or JSON/list search URLs in configured order."""
+
+    raw = _value(config, "search_endpoints")
+    values: Any = raw
+    if isinstance(raw, str):
+        text = raw.strip()
+        if text.startswith("["):
+            try:
+                values = json.loads(text)
+            except json.JSONDecodeError:
+                values = raw.splitlines()
+        else:
+            values = raw.splitlines()
+    if isinstance(values, str):
+        values = [values]
+    if not isinstance(values, (list, tuple)):
+        values = []
+    endpoints = [str(item).strip() for item in values if str(item).strip()]
+    return endpoints or list(DEFAULT_SEARCH_ENDPOINTS)
+
+
 class MemeWikiPlugin(Star):
     """Teach the active AI what a community's recurring memes mean."""
 
@@ -88,7 +112,8 @@ class MemeWikiPlugin(Star):
             max_entries=_bounded_int(self.config, "max_entries", 1, 10000),
         )
         self.web_client = WebSearchClient(
-            timeout=_bounded_float(self.config, "web_search_timeout", 1.0, 30.0)
+            timeout=_bounded_float(self.config, "web_search_timeout", 1.0, 30.0),
+            endpoints=_search_endpoints(self.config),
         )
         self._web_cache: dict[str, tuple[float, list[SearchResult]]] = {}
         self._web_cache_ttl = 600.0
@@ -178,8 +203,9 @@ class MemeWikiPlugin(Star):
         if cached and now - cached[0] < self._web_cache_ttl:
             return cached[1]
         limit = _bounded_int(self.config, "web_result_count", 1, 10)
+        min_score = _bounded_float(self.config, "search_match_threshold", 0.0, 1.0)
         try:
-            results = await self.web_client.search(query, limit=limit)
+            results = await self.web_client.search(query, limit=limit, min_score=min_score)
         except Exception as exc:  # noqa: BLE001 - network must never break chat
             logger.warning("梗 Wiki 网络搜索失败：%s", exc)
             results = []
@@ -301,7 +327,7 @@ class MemeWikiPlugin(Star):
         action_index = 1 if has_command_prefix else 0
         action = pieces[action_index].casefold() if len(pieces) > action_index else ""
         payload = pieces[action_index + 1] if len(pieces) > action_index + 1 else ""
-        if action in {"帮助", "help"} or not remainder:
+        if action in {"帮助", "help"} or not payload:
             yield event.plain_result(
                 "梗 Wiki 用法：\n"
                 "/梗wiki 查询 <梗>\n"

@@ -4,6 +4,16 @@
     "type": "bool",
     "default": true
   },
+  "search_endpoints": {
+    "description": "按优先级排列的搜索地址，每行一个；支持 {query} 或地址末尾的空查询参数",
+    "type": "string",
+    "default": "https://zh.moegirl.org.cn/index.php?search="
+  },
+  "search_match_threshold": {
+    "description": "高匹配结果阈值，达到后停止调用后续搜索地址（0 到 1）",
+    "type": "float",
+    "default": 0.72
+  },
   "web_search_timeout": {
     "description": "网络搜索超时时间（秒）",
     "type": "float",
